@@ -1,0 +1,14 @@
+- @photo = Photo.find(params[:id])
+.container
+  .row
+    .span3
+    .span6
+      p#notice= notice
+      = image_tag "http://farm#{@photo.farm}.staticflickr.com/#{@photo.server}/#{@photo.photo_id}_#{@photo.secret}.jpg", class:'img-rounded'
+      hr
+        .row
+          .span2
+          .span2
+            = link_to "back", :back, class: "btn btn-primary btn-large"
+          .span2
+    .span3

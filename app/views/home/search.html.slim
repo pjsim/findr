@@ -1,1 +1,9 @@
-h1 Search
+.container
+  - @photo_search = Photo.all.paginate(:page => params[:page], :per_page => 45)
+  - if @photo_search.empty?
+    	h3 No Results..
+  - else
+    	h3 Results for #{params[:q]}
+  		- @photo_search.each do |photo|
+    		= link_to image_tag("http://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.photo_id}_#{photo.secret}_s.jpg"), photo_path(photo)
+  = will_paginate @photo_search
