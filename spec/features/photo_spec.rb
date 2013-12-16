@@ -7,6 +7,7 @@ feature 'Photo Search' do
 		click_button 'Search'
 		expect(page).to have_content 'Results for France'
 		expect(page).to_not have_content 'No Results..'
+		expect(page).to have_selector('img', count:46)
 	end
 
 	scenario 'Search with no keyword using navbar from home page' do
@@ -14,6 +15,7 @@ feature 'Photo Search' do
 		fill_in 'q', with: ''
 		click_button 'Search'
 		expect(page).to have_content 'No Results..'
+		expect(page).to have_selector('img', count:1) #should always have logo image
 	end
 
 end
@@ -23,8 +25,7 @@ feature 'Click on search thumbnail for larger image' do
 		visit root_path
 		fill_in 'q', with: 'Snow'
 		click_button 'Search'
-		expect(page).to have_content 'THIS AINT DONE YET'
-		# click on image thumbnail
-		# expect page to have single image
+		page.all('a')[1].click
+		expect(page).to have_selector('img', count:2)
 	end
 end
