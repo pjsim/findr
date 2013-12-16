@@ -2,8 +2,18 @@ doctype
 html
   head
     title Findr
+    .navbar
+      .navbar-inner
+        = link_to "Findr", root_path, class:'brand', id:'brand'
+       	= image_tag 'findr.png', id:'logo'
+        ul.nav
+          li
+            = form_tag("/home/search", method: "get") do
+	            = text_field_tag(:q)
+	            = submit_tag("Search", class:'btn btn-info')
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
-    = yield
+  	.container
+    	= yield
