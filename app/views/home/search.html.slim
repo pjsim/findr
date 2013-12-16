@@ -6,5 +6,4 @@
     	h3 Results for #{params[:q]}
   		- @photo_search.each do |photo|
     		= link_to image_tag("http://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.photo_id}_#{photo.secret}_s.jpg"), photo_path(photo), class:'photo_thumbnail'
-    	= link_to 'helllooo', root_path, id: 'apple'
   = will_paginate @photo_search
